@@ -6,11 +6,15 @@ $secondary-color: #E67E80;
 $background: #2D353B;
 $light-background: #425047;
 $text-color: #D3C6AA;
-$form-background-color: #1E2326;
-$form-text-color: #D3C6AA;
+$form-background-color: #E8E5D5;
+$form-text-color: #5C6A72;
 $muted-color: #999999;
 
 .p-author .p-note{
   font-size: small;
   line-height: 1.2rem;
+}
+
+button {
+  border-radius: 10%;
 }
