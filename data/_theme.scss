@@ -15,6 +15,15 @@ $muted-color: #999999;
   line-height: 1.2rem;
 }
 
-button {
-  border-radius: 10%;
+button, .label-btn {
+  border-radius: 10px;
+
+  // add shadow to button
+  // shadow is shining for dark theme
+  box-shadow: 0 0 20px 0 #808080;
+
+  // shadow is brighter if button is hovered
+  &:hover {
+    box-shadow: 0 0 40px 0 #FFFFFF;
+  }
 }
