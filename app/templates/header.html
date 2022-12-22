@@ -34,9 +34,11 @@
 <a href="{{ navbar_item[0] }}" {% if BASE_URL + request.url.path == url_for %}class="active"{% endif %}>{{ navbar_item[1] }}</a>
 {% endmacro %}
 
+{% if request.url.path != "/remote_follow" %}
 <nav>
   <a href="/remote_follow"><button>Follow</button></a>
 </nav>
+{% endif %}
 
 <div class="public-top-menu">
 <nav class="flexbox">
