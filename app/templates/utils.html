@@ -94,7 +94,14 @@
     {{ embed_csrf_token() }}
     {{ embed_redirect_url(permalink_id) }}
     <input type="hidden" name="ap_object_id" value="{{ ap_object_id }}">
-    <input type="submit" value="like">
+    <button type="submit">
+      <span class="pc">
+        like
+      </span>
+      <span class="mobile">
+        <img src="{{ BASE_URL }}/static/twemoji/2764.svg" alt="like" class="emoji navemoji" />
+      </span>
+    </button>
 </form>
 {% endblock %}
 {% endmacro %}
@@ -105,7 +112,14 @@
     {{ embed_csrf_token() }}
     {{ embed_redirect_url(permalink_id) }}
     <input type="hidden" name="ap_object_id" value="{{ ap_object_id }}">
-    <input type="submit" value="bookmark">
+    <button type="submit">
+      <span class="pc">
+        bookmark
+      </span>
+      <span class="mobile">
+        <img src="{{ BASE_URL }}/static/twemoji/1f516.svg" alt="bookmark" class="emoji navemoji" />
+      </span>
+    </button>
 </form>
 {% endblock %}
 {% endmacro %}
@@ -116,7 +130,15 @@
     {{ embed_csrf_token() }}
     {{ embed_redirect_url(permalink_id) }}
     <input type="hidden" name="ap_object_id" value="{{ ap_object_id }}">
-    <input type="submit" value="unbookmark">
+    <button type="submit">
+      <span class="pc">
+        unbookmark
+      </span>
+      <span class="mobile">
+        <img src="{{ BASE_URL }}/static/twemoji/1f6ae.svg" alt="unbookmark" class="emoji navemoji" />
+        <img src="{{ BASE_URL }}/static/twemoji/1f516.svg" alt="unbookmark" class="emoji navemoji" />
+      </span>
+    </button>
 </form>
 {% endblock %}
 {% endmacro %}
@@ -127,7 +149,14 @@
     {{ embed_csrf_token() }}
     {{ embed_redirect_url(permalink_id) }}
     <input type="hidden" name="ap_object_id" value="{{ ap_object_id }}">
-    <input type="submit" value="pin">
+    <button type="submit">
+      <span class="pc">
+        pin
+      </span>
+      <span class="mobile">
+        <img src="{{ BASE_URL }}/static/twemoji/1f4cc.svg" alt="pin" class="emoji navemoji" />
+      </span>
+    </button>
 </form>
 {% endblock %}
 {% endmacro %}
@@ -149,7 +178,14 @@
     {{ embed_csrf_token() }}
     <input type="hidden" name="redirect_url" value="{% if request.url.path.endswith("/" + ap_object.public_id) or (request.url.path == "/admin/object" and request.query_params.ap_id.endswith("/" + ap_object.public_id)) %}{{ request.base_url}}{% else %}{{ request.url }}{% endif %}">
     <input type="hidden" name="ap_object_id" value="{{ ap_object.ap_id }}">
-    <input type="submit" value="delete">
+    <button type="submit">
+      <span class="pc">
+        delete
+      </span>
+      <span class="mobile">
+        <img src="{{ BASE_URL }}/static/twemoji/1f5d1.svg" alt="delete" class="emoji navemoji" />
+      </span>
+    </button>
 </form>
 {% endblock %}
 {% endmacro %}
@@ -181,8 +217,14 @@
 <form action="{{ request.url_for("admin_actions_announce") }}" method="POST">
     {{ embed_csrf_token() }}
     {{ embed_redirect_url(permalink_id) }}
-    <input type="hidden" name="ap_object_id" value="{{ ap_object_id }}">
-    <input type="submit" value="share">
+    <button type="submit">
+      <span class="pc">
+        share
+      </span>
+      <span class="mobile">
+        <img src="{{ BASE_URL }}/static/twemoji/1f517.svg" alt="share" class="emoji navemoji" />
+      </span>
+    </button>
 </form>
 {% endblock %}
 {% endmacro %}
@@ -193,7 +235,17 @@
     {{ embed_csrf_token() }}
     {{ embed_redirect_url(permalink_id) }}
     <input type="hidden" name="ap_object_id" value="{{ ap_object_id }}">
-    <input type="submit" value="{{ action }}">
+    <button type="submit" class="button">
+      <span class="pc">
+        {{ action }}
+      </span>
+      <span class="mobile">
+        {% if action == "unlike" %}
+          <img src="{{ BASE_URL }}/static/twemoji/1f494.svg" alt="thumbs down" class="emoji navemoji" />
+        {% else %}
+          {{ action }}
+        {% endif %}
+      </span>
 </form>
 {% endblock %}
 {% endmacro %}
@@ -202,7 +254,14 @@
 {% block admin_reply_button scoped %}
 <form action="{{ BASE_URL }}/admin/new"  method="GET">
 <input type="hidden" name="in_reply_to" value="{{ ap_object_id }}">
-<button type="submit">reply</button>
+<button type="submit">
+  <span class="pc">
+    reply
+  </span>
+  <span class="mobile">
+    <img src="{{ BASE_URL }}/static/twemoji/21a9.svg" alt="↩" class="emoji navemoji" />
+  </span>
+</button>
 </form> 
 {% endblock %}
 {% endmacro %}
@@ -232,7 +291,14 @@
 {% block admin_profile_button scoped %}
 <form action="{{ url_for("admin_profile") }}"  method="GET">
 <input type="hidden" name="actor_id" value="{{ ap_actor_id }}">
-<button type="submit">profile</button>
+<button type="submit">
+  <span class="pc">
+    profile
+  </span>
+  <span class="mobile">
+    <img src="{{ BASE_URL }}/static/twemoji/1f464.svg" alt="👤" class="emoji navemoji" />
+  </span>
+</button>
 </form> 
 {% endblock %}
 {% endmacro %}
@@ -242,7 +308,14 @@
 {# TODO turn these into a regular link and append permalink ID if it's a reply #}
 <form action="{{ url_for("admin_object") }}"  method="GET">
 <input type="hidden" name="ap_id" value="{{ ap_object.ap_id }}">
-<button type="submit">expand</button>
+<button type="submit">
+  <span class="pc">
+    expand
+  </span>
+  <span class="mobile">
+    <img src="{{ BASE_URL }}/static/twemoji/1f4c8.svg" alt="📈" class="emoji navemoji" />
+  </span>
+</button>
 </form> 
 {% endblock %}
 {% endmacro %}
@@ -776,11 +849,6 @@
                     {{ admin_profile_button(object.actor.ap_id) }}
                 </li>
             {% endif %}
-        {% endif %}
-        {% if object.is_from_inbox or object.is_from_outbox %}
-            <li>
-                {{ admin_expand_button(object) }}
-            </li>
         {% endif %}
         {% if object.is_from_inbox and not object.announced_via_outbox_object_ap_id and object.is_local_reply %}
             <li>

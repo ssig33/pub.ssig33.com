@@ -33,3 +33,28 @@ button, .label-btn, nav input[type=submit] {
 .mini {
   font-size: 0.8rem;
 }
+
+
+@media(max-width:420px) {
+  .pc {
+    display: none;
+  }
+
+  .navemoji{
+    width: 2.5rem;
+  }
+
+  nav form button {
+    line-height: 1.2rem !important;
+  }
+
+  nav.flexbox ul li{
+    margin-right: 10px;
+  }
+}
+
+@media(min-width:420px) {
+  .mobile {
+    display: none;
+  }
+}
