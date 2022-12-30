@@ -10,7 +10,11 @@ ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
 FROM python-base as builder-base
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends curl build-essential gcc libffi-dev libssl-dev libxml2-dev libxslt1-dev zlib1g-dev libxslt-dev gcc libjpeg-dev zlib1g-dev libwebp-dev
+RUN apt-get install -y --no-install-recommends curl build-essential gcc libffi-dev libssl-dev libxml2-dev libxslt1-dev zlib1g-dev libxslt-dev gcc libjpeg-dev zlib1g-dev libwebp-dev s3fs 
+
+ADD https://github.com/benbjohnson/litestream/releases/download/v0.3.9/litestream-v0.3.9-linux-amd64-static.tar.gz /tmp/litestream.tar.gz
+RUN tar -C /usr/local/bin -xzf /tmp/litestream.tar.gz
+
 # rustc is needed to compile Python packages
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
