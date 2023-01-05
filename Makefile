@@ -5,6 +5,11 @@ PWD=$(shell pwd)
 build:
 	docker build -t microblogpub/microblogpub .
 
+.PHONY: restart
+restart: build
+	docker-compose down
+	docker-compose up -d
+
 .PHONY: config
 config:
 	# Run and remove instantly
