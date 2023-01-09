@@ -5,8 +5,12 @@ PWD=$(shell pwd)
 build:
 	docker build -t microblogpub/microblogpub .
 
-.PHONY: restart
-restart: build
+.PHONY: pull
+pull:
+	git pull origin v2
+
+.PHONY: rebuild
+rebuild: pull build
 	docker-compose down
 	docker-compose up -d
 
