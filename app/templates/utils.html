@@ -217,6 +217,7 @@
 <form action="{{ request.url_for("admin_actions_announce") }}" method="POST">
     {{ embed_csrf_token() }}
     {{ embed_redirect_url(permalink_id) }}
+    <input type="hidden" name="ap_object_id" value="{{ ap_object_id }}" />
     <button type="submit">
       <span class="pc">
         share
