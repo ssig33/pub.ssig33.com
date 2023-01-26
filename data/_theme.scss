@@ -34,6 +34,17 @@ button, .label-btn, nav input[type=submit] {
   font-size: 0.8rem;
 }
 
+.header-profile {
+  display: flex;
+}
+
+.active-header {
+  border-bottom: 2px solid #7FBBB3;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 
 @media(max-width:420px) {
   .pc {
@@ -51,10 +62,28 @@ button, .label-btn, nav input[type=submit] {
   nav.flexbox ul li{
     margin-right: 10px;
   }
+
+  .header-profile .icon-box{
+    display:none;
+  }
 }
 
 @media(min-width:420px) {
-  .mobile {
-    display: none;
+  .mobile { display: none; }
+
+
+  .header-profile .icon-box{
+    width: 280px; 
+    height: 280px; 
+  }
+
+  .header-profile .icon-box img{
+    width: 280px;
+    height: 280px;
+  }
+
+  .header-profile .profile {
+    flex-grow: 1;
+    margin-left: 20px;
   }
 }
