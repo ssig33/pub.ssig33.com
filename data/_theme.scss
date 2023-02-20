@@ -47,8 +47,16 @@ button, .label-btn, nav input[type=submit] {
 
 
 @media(max-width:420px) {
+  a {
+    word-wrap: break-word;
+  }
+
   .pc {
     display: none;
+  }
+
+  .inline-img {
+    max-width: 100% !important;
   }
 
   .navemoji{
