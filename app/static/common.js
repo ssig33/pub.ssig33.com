@@ -30,3 +30,11 @@ for (var i = 0; i < items.length; i++) {
         });
     }
 }
+
+if(location.pathname.match(/\/o\/............./) || location.pathname === '/'){
+  Array.from(document.querySelectorAll(".actor-box")).forEach((dom)=>{
+    if(dom.textContent.match(/ssig33/)){
+      dom.style.display = "none";
+    }
+  });
+}
