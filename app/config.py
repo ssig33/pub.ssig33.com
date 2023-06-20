@@ -163,8 +163,7 @@ def verify_password(pwd: str) -> bool:
 
 CONFIG = load_config()
 DOMAIN = CONFIG.domain
-_SCHEME = "https" if CONFIG.https else "http"
-ID = f"{_SCHEME}://{DOMAIN}"
+ID = f"https://{DOMAIN}"
 
 # When running the app on a path, the ID maybe set by the config, but in this
 # case, a valid webfinger must be served on the root domain
