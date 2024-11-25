@@ -8,6 +8,8 @@ from pygments.formatters import HtmlFormatter  # type: ignore
 from pygments.lexers import get_lexer_by_name  # type: ignore
 from pygments.lexers import guess_lexer  # type: ignore
 
+import html
+
 from app.config import CODE_HIGHLIGHTING_THEME
 
 _FORMATTER = HtmlFormatter(style=CODE_HIGHLIGHTING_THEME)
@@ -29,6 +31,7 @@ def highlight(html: str) -> str:
         code_content = (
             code.encode_contents().decode().replace("<br>", "\n").replace("<br/>", "\n")
         )
+        code_content = html.unescape(code_content)
 
         # If this comes from a microblog.pub instance we may have the language
         # in the class name
@@ -38,9 +41,6 @@ def highlight(html: str) -> str:
             except Exception:
                 lexer = guess_lexer(code_content)
 
-            # Replace the code with Pygment output
-            # XXX: the HTML escaping causes issue with Python type annotations
-            code_content = code_content.replace(") -&gt; ", ") -> ")
             code.parent.replaceWith(
                 BeautifulSoup(
                     phighlight(code_content, lexer, _FORMATTER), "html5lib"
