@@ -1255,15 +1255,6 @@ async def post_remote_interaction(
 
 @app.get("/.well-known/webfinger")
 async def wellknown_webfinger(resource: str) -> JSONResponse:
-    """Exposes/servers WebFinger data."""
-    if resource not in [
-        f"acct:{USERNAME}@{WEBFINGER_DOMAIN}",
-        ID,
-        f"acct:{USERNAME}@{DOMAIN}",
-    ]:
-        logger.info(f"Got invalid req for {resource}")
-        raise HTTPException(status_code=404)
-
     out = {
         "subject": f"acct:{USERNAME}@{WEBFINGER_DOMAIN}",
         "aliases": [ID],
